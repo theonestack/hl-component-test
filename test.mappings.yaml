@@ -1,0 +1,11 @@
+EnvironmentType:
+  dev:
+    InstanceType: t2.medium
+    SingleNatGateway: true
+  prod:
+    InstanceType: m4.medium
+    SingleNatGateway: false
+
+AccountId:
+  012345678901:
+    DnsDomain: 'example2.com'

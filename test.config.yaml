@@ -1,0 +1,30 @@
+####
+####  Meta highlander configuration
+####    - allow override of component configuration
+####
+
+config_export:
+  global:
+    - managed_accounts
+
+managed_accounts:
+  default:
+    local: true
+
+components:
+  vpc1:
+    config:
+      ip_blocks:
+        public:
+          - 0.0.0.0/0
+        ops:
+          - 10.10.100.0/24
+        dev:
+          - 10.10.100.0/24
+
+
+
+####
+#### Component configuration anything referenced here can be used in template
+####
+vpc1version: latest
