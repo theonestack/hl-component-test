@@ -13,8 +13,8 @@ HighlanderComponent do
     StackParam 'EnvironmentType', 'dev'
   end
 
-  # directly from default branch
-  Component name: 'vpc0', template: 'github.com:theonestack/hl-component-vpc'
+  # # directly from default branch
+  Component name: 'vpc0', template: 'vpc'
 
   # specify branch github.com: or github: work. You specify branch with hash
   Component name: 'vpc1', template: 'github:theonestack/hl-component-vpc#master'
@@ -39,7 +39,9 @@ HighlanderComponent do
   # Locally defined components
   Component name: 'client2App', template: 'app'
   Component name: 'client3App', template: 'app'
-  Component name: 's3', template: 's3'
+  Component name: 's3one', template: 's3'
+  Component name: 's3two', template: 's3'
+  Component template: 's3'
 
   # If we explicitly provide parameters, stack params won't be exposed on top
   #   level stack, but rather passed values will be used
@@ -47,5 +49,13 @@ HighlanderComponent do
       'NetworkPrefix' => 10,
       'StackOctet' => 20
   }
+
+  Component template: 'sns'
+  Component template: 'sns@develop.snapshot', name: 'customsns'
+  Component template: 'bastion'
+  Component template: 'ecs'
+  Component template: 'github.com:theonestack/hl-component-ecs-service#master.snapshot', name: 'nginx'
+  Component name: 'lb1', template: 'loadbalancer'
+  Component name: 'lb2', template: 'loadbalancer'
 
 end

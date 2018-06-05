@@ -1,6 +1,7 @@
-HighlanderComponent do
+CfhighlanderComponent do
 
-  Name 'application'
+  Name "app1234567"
+  # Description "Description for component #{component_name}"
 
   Parameters do
 
