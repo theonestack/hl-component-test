@@ -23,10 +23,10 @@ HighlanderComponent do
   # Component name: 'vpc2', template: 'git:git@github.com:theonestack/hl-component-vpc.git'
 
   # use git over https
-  Component name: 'vpc3', template: 'git:https://github.com/theonestack/hl-component-vpc.git'
+  Component name: 'vpc3', template: 'git:https://github.com/theonestack/hl-component-sns.git'
 
   # specify .snapshot to always clone fresh copy
-  Component name: 'vpc4', template: 'git:https://github.com/theonestack/hl-component-vpc.git#master.snapshot'
+  Component name: 'vpc4', template: 'git:https://github.com/theonestack/hl-component-sns.git#master.snapshot'
 
   # by default, if not found locally, highlander will search for https://github.com/theonestack/component-$componentname
   # in v${version} branch (or tag for that matter)
@@ -57,5 +57,8 @@ HighlanderComponent do
   Component template: 'github.com:theonestack/hl-component-ecs-service#master.snapshot', name: 'nginx'
   Component name: 'lb1', template: 'loadbalancer'
   Component name: 'lb2', template: 'loadbalancer'
+
+  # component by template name, no keyword args
+  Component 'c1'
 
 end
