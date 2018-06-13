@@ -2,7 +2,7 @@
 ## 1. embed parameters in modules and set default values
 ## 2. expose metadata for highlander assembly to assemble master template
 
-HighlanderComponent do
+CfhighlanderTemplate do
 
   Name 'Master'
 
@@ -23,10 +23,10 @@ HighlanderComponent do
   # Component name: 'vpc2', template: 'git:git@github.com:theonestack/hl-component-vpc.git'
 
   # use git over https
-  Component name: 'vpc3', template: 'git:https://github.com/theonestack/hl-component-sns.git'
+  Component name: 'snsfromgithttps', template: 'git:https://github.com/theonestack/hl-component-sns.git'
 
   # specify .snapshot to always clone fresh copy
-  Component name: 'vpc4', template: 'git:https://github.com/theonestack/hl-component-sns.git#master.snapshot'
+  Component name: 'snsfromsnapshot', template: 'git:https://github.com/theonestack/hl-component-sns.git#master.snapshot'
 
   # by default, if not found locally, highlander will search for https://github.com/theonestack/component-$componentname
   # in v${version} branch (or tag for that matter)
@@ -34,11 +34,11 @@ HighlanderComponent do
 
 
   # be on a bleeding edge, always grab the latest as develop is default branch
-  Component name: 'vpc6', template: 'vpc@develop.snapshot'
+  Component name: 'vpc6', template: 'vpc@master.snapshot'
 
   # Locally defined components
-  Component name: 'client2App', template: 'app'
-  Component name: 'client3App', template: 'app'
+  Component name: 'client2App', template: 'app', conditional: true
+  Component name: 'client3App', template: 'app', conditional: true, enabled: false
   Component name: 's3one', template: 's3'
   Component name: 's3two', template: 's3'
   Component template: 's3'
@@ -51,9 +51,10 @@ HighlanderComponent do
   }
 
   Component template: 'sns'
-  Component template: 'sns@develop.snapshot', name: 'customsns'
+  Component template: 'sns@master.snapshot', name: 'customsns'
   Component template: 'bastion'
   Component template: 'ecs'
+  Component template: 'ecs-service', conditional: true, enabled: false
   Component template: 'github.com:theonestack/hl-component-ecs-service#master.snapshot', name: 'nginx'
   Component name: 'lb1', template: 'loadbalancer'
   Component name: 'lb2', template: 'loadbalancer'
