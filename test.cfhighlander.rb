@@ -33,9 +33,6 @@ CfhighlanderTemplate do
   Component name: 'vpc5', template: 'vpc@1.0.4'
 
 
-  # be on a bleeding edge, always grab the latest as develop is default branch
-  Component name: 'vpc6', template: 'vpc@master.snapshot'
-
   # Locally defined components
   Component name: 'client2App', template: 'app', conditional: true
   Component name: 'client3App', template: 'app', conditional: true, enabled: false
@@ -45,10 +42,10 @@ CfhighlanderTemplate do
 
   # If we explicitly provide parameters, stack params won't be exposed on top
   #   level stack, but rather passed values will be used
-  Component name: 'vpc7', template: 'vpc', param_values: {
-      'NetworkPrefix' => 10,
-      'StackOctet' => 20
-  }
+  Component name: 'vpc7', template: 'vpc' do
+    parameter name: 'NetworkPrefix', value: 10
+    parameter name: 'StackOctet', value: 20
+  end
 
   Component template: 'sns'
   Component template: 'sns@master.snapshot', name: 'customsns'
