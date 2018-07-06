@@ -58,5 +58,5 @@ CfhighlanderTemplate do
 
   # component by template name, no keyword args
   Component 'c1'
-
+  Component 'ineedexternalconfig'
 end
